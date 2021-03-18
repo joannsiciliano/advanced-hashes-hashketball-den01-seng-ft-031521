@@ -1,9 +1,11 @@
 # Write your code below game_hash
+require 'pry'
+
 def game_hash
   {
     home: {
       team_name: "Brooklyn Nets",
-      colors: ["Black", "White"],
+      colors:["Black","White"],
       players: [
         {
           player_name: "Alan Anderson",
@@ -61,7 +63,7 @@ def game_hash
           slam_dunks: 1
         }
       ]
-    },
+    },{
     away: {
       team_name: "Charlotte Hornets",
       colors: ["Turquoise", "Purple"],
@@ -123,7 +125,35 @@ def game_hash
         }
       ]
     }
-  }
+  }  
+end
+      
+def num_points_scored(player_name)
+ game_hash.each do |team,team_data|
+   team_data[:players].each do |player|
+     if player [:player_name] == player_name
+       return player[:points]
+     end
+   end
+end
 end
 
-# Write code here
+def shoe_size(player_name)
+  game_hash.each do |team_place, team_info|
+   # binding.pry
+    team_info[:players].each do |player|
+      #binding.pry
+      if player[:player_name]==player_name
+        return player[:shoe]
+      end
+  end
+end
+end
+
+def team_colors(team_input)
+  if team_input.downcase == "charlotte hornets"
+    return game_hash[:away][:colors]
+  else return game_hash [:home][:colors]
+  end
+end
+end
